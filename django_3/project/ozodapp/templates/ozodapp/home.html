@@ -1,0 +1,84 @@
+{% extends 'ozodapp/base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .category-title {
+        margin: 10px 10px;
+    }
+</style>
+
+
+<div class="container">
+    <h1>Bo'limlar</h1>
+    <div class="category">
+        {% for item in category %}
+        <a href="{{item.get_absolute_url}}" class="btn btn-primary category-title">
+            {{ item.title }}
+        </a>
+        {% endfor %}
+    </div>
+
+    <h1>Eng ko'p ko;rilganlar</h1>
+    <div class="row my-5">
+        {% for item in pop_news %}
+        <div class="col-lg-4">
+            <div class="card" style="width: 100%;">
+                <a href="{{item.get_absolute_url}}">
+                    <img src="{{ item.image.url }}" style="margin: 0px; border-radius: 5px;" class="card-img-top"
+                        alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+
+                </div>
+                <p class="card-text p-3 text-secondary">
+                    <i class="fa-solid fa-eye"></i>
+                    {{item.popular}}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h1>So'ngi Yangiliklar</h1>
+    <div class="row my-5">
+        {% for item in last_posts %}
+        <div class="col-lg-4">
+            <div class="card" style="width: 100%;">
+                <a href="{{item.get_absolute_url}}">
+                    <img src="{{ item.image.url }}" style="margin: 0px; border-radius: 5px;" class="card-img-top"
+                        alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <h1>Yangiliklar</h1>
+    <div class="row my-5">
+        {% for item in posts %}
+        <div class="col-lg-3">
+            <div class="card" style="width: 100%;">
+                <a href="{{item.get_absolute_url}}">
+                    <img src="{{ item.image.url }}" style="margin: 0px; border-radius: 5px;" class="card-img-top"
+                        alt="...">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+{% endblock %}
